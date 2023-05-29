@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Document</title>
+</head>
+<main>
+  <section class="section1">
+ 
+    <div class="wrapper">
+ 
+      <button class="boton" id="buttonstart"></button>
+      <div class="ojo">
+        <div class="forma">
+          <div class="cont">
+          </div>
+          <div class="ball">
+            <div class="iris">
+              <div class="int"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="bola"></div>
+  <div class="section2"></div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+<script>
+
+  var button = document.getElementById("buttonstart");
+
+  var contanimacion = document.querySelector(".cont");
+  var irisanimacion = document.querySelector(".iris");
+
+  var irisElement = document.querySelector(".iris");
+  var bolaElement = document.querySelector(".bola");
+
+
+
+  button.addEventListener("click", startAnimation);
+
+  function startAnimation() {
+    contanimacion.classList.add("animatecont");
+    irisanimacion.classList.add("animateiris");
+
+  }
+
+  var section1 = document.querySelector(".section1");
+var midWidth = Math.floor(section1.offsetWidth / 2);
+var midHeight = Math.floor(section1.offsetHeight / 2);
+var mousePos = {
+  x: midWidth,
+  y: midHeight
+};
+
+document.addEventListener("mousemove", updateMousePos);
+
+function updateMousePos(event) {
+  if (section1.contains(event.target)) {
+    mousePos.x = event.pageX - section1.offsetLeft;
+    mousePos.y = event.pageY - section1.offsetTop;
+    
+
+    var transX = mousePos.x - midWidth;
+    var transY = mousePos.y - midHeight;
+    var skewX = 0;
+    if (transX > -30 && transX < 30 && transY < 0) {
+      skewX = transX / 2;
+    } else if (transX > -30 && transX < 30 && transY >= 0) {
+      skewX = -(transX / 2);
+    } else if (transX > 30) {
+      skewX = -(transY / 2);
+    } else if (transX < -30) {
+      skewX = transY / 2;
+    }
+    if (transX >= 40) {
+      transX = 40;
+    } else if (transX <= -40) {
+      transX = -40;
+    }
+    if (transY >= 10) {
+      transY = 10;
+    } else if (transY <= -20) {
+      transY = -20;
+    }
+
+    if (skewX >= 15) {
+      skewX = 15;
+    } else if (skewX <= -15) {
+      skewX = -15;
+    }
+
+    var iris = document.querySelector(".iris");
+    iris.style.transform = "translateX(" + transX + "px) translateY(" + transY + "px) skewX(" + skewX + "deg) skewY(2deg)";
+
+    var irisRect = irisElement.getBoundingClientRect();
+    var irisTop = irisRect.top + window.scrollY;
+    var irisLeft = irisRect.left + window.scrollX;
+
+    bolaElement.style.top = irisTop + 30 + "px";
+    bolaElement.style.left = irisLeft + 35 + "px";
+  }}
+
+/*   document.addEventListener("mousemove", updateMousePos);
+  var iris = document.querySelector(".iris");
+  var topOffset = iris.offsetTop;
+  var leftOffset = iriss.offsetLeft;
+
+  console.log("Ubicación superior (offsetTop):", topOffset);
+  console.log("Ubicación izquierda (offsetLeft):", leftOffset);
+ */
+
+
+</script>
+
+<script>
+  
+  var tl
+  function enableTimeline() {
+    var tl = gsap.timeline({
+      scrollTrigger: {
+        
+        markers: true,
+        trigger: ".wrapper",
+        scrub: 3,
+        start: "top top+=200px",
+        end: "+=100",
+   
+
+      },
+    })
+    tl.to(".section2", {
+      display: "block",
+    });
+    tl.to(".int", {
+      opacity: 0,
+    });
+    
+    tl.to(".bola", {
+      y: 200,
+      scrub: true,
+   
+       ease: "bounce.out",
+   
+    });
+    tl.to(".bola", {
+      opacity: 1,
+  
+    }, "-=1");
+
+
+  
+    tl.to(".section1", {
+      opacity: 0,
+  
+    });
+
+
+  }
+
+  var button = document.getElementById("buttonstart");
+  button.addEventListener("click", enableTimeline);
+
+</script>
+</body>
+
+</html>
