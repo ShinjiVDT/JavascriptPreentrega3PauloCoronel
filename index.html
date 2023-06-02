@@ -10,9 +10,9 @@
 </head>
 <main>
   <section class="section1">
- 
+
     <div class="wrapper">
- 
+
       <button class="boton" id="buttonstart"></button>
       <div class="ojo">
         <div class="forma">
@@ -26,9 +26,26 @@
         </div>
       </div>
     </div>
+
+
+    
+
   </section>
+
   <div class="bola"></div>
-  <div class="section2"></div>
+  <section class="section2"> </section>
+
+  <section class="section3 wrapwrapper">
+
+
+      <div><h1 class="title"> <div class="luz"></div> animación, blob, <br> lava</h1></div>
+  
+   
+      <div class="blob-wrapper">
+      </div>
+
+  </section>
+
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
@@ -54,120 +71,276 @@
   }
 
   var section1 = document.querySelector(".section1");
-var midWidth = Math.floor(section1.offsetWidth / 2);
-var midHeight = Math.floor(section1.offsetHeight / 2);
-var mousePos = {
-  x: midWidth,
-  y: midHeight
-};
+  var midWidth = Math.floor(section1.offsetWidth / 2);
+  var midHeight = Math.floor(section1.offsetHeight / 2);
+  var mousePos = {
+    x: midWidth,
+    y: midHeight
+  };
 
-document.addEventListener("mousemove", updateMousePos);
+  document.addEventListener("mousemove", updateMousePos);
 
-function updateMousePos(event) {
-  if (section1.contains(event.target)) {
-    mousePos.x = event.pageX - section1.offsetLeft;
-    mousePos.y = event.pageY - section1.offsetTop;
-    
+  function updateMousePos(event) {
+    if (section1.contains(event.target)) {
+      mousePos.x = event.pageX - section1.offsetLeft;
+      mousePos.y = event.pageY - section1.offsetTop;
+      var transX = mousePos.x - midWidth;
+      var transY = mousePos.y - midHeight;
+      var skewX = 0;
+      if (transX > -30 && transX < 30 && transY < 0) {
+        skewX = transX / 2;
+      } else if (transX > -30 && transX < 30 && transY >= 0) {
+        skewX = -(transX / 2);
+      } else if (transX > 30) {
+        skewX = -(transY / 2);
+      } else if (transX < -30) {
+        skewX = transY / 2;
+      }
+      if (transX >= 40) {
+        transX = 40;
+      } else if (transX <= -40) {
+        transX = -40;
+      }
+      if (transY >= 10) {
+        transY = 10;
+      } else if (transY <= -20) {
+        transY = -20;
+      }
 
-    var transX = mousePos.x - midWidth;
-    var transY = mousePos.y - midHeight;
-    var skewX = 0;
-    if (transX > -30 && transX < 30 && transY < 0) {
-      skewX = transX / 2;
-    } else if (transX > -30 && transX < 30 && transY >= 0) {
-      skewX = -(transX / 2);
-    } else if (transX > 30) {
-      skewX = -(transY / 2);
-    } else if (transX < -30) {
-      skewX = transY / 2;
+      if (skewX >= 15) {
+        skewX = 15;
+      } else if (skewX <= -15) {
+        skewX = -15;
+      }
+
+      var iris = document.querySelector(".iris");
+      iris.style.transform = "translateX(" + transX + "px) translateY(" + transY + "px) skewX(" + skewX + "deg) skewY(2deg)";
+
+      var irisRect = irisElement.getBoundingClientRect();
+      var irisTop = irisRect.top + window.scrollY;
+      var irisLeft = irisRect.left + window.scrollX;
+
+      bolaElement.style.top = irisTop + 30 + "px";
+      bolaElement.style.left = irisLeft + 35 + "px";
+
+
+
     }
-    if (transX >= 40) {
-      transX = 40;
-    } else if (transX <= -40) {
-      transX = -40;
-    }
-    if (transY >= 10) {
-      transY = 10;
-    } else if (transY <= -20) {
-      transY = -20;
-    }
-
-    if (skewX >= 15) {
-      skewX = 15;
-    } else if (skewX <= -15) {
-      skewX = -15;
-    }
-
-    var iris = document.querySelector(".iris");
-    iris.style.transform = "translateX(" + transX + "px) translateY(" + transY + "px) skewX(" + skewX + "deg) skewY(2deg)";
-
-    var irisRect = irisElement.getBoundingClientRect();
-    var irisTop = irisRect.top + window.scrollY;
-    var irisLeft = irisRect.left + window.scrollX;
-
-    bolaElement.style.top = irisTop + 30 + "px";
-    bolaElement.style.left = irisLeft + 35 + "px";
-  }}
-
-/*   document.addEventListener("mousemove", updateMousePos);
-  var iris = document.querySelector(".iris");
-  var topOffset = iris.offsetTop;
-  var leftOffset = iriss.offsetLeft;
-
-  console.log("Ubicación superior (offsetTop):", topOffset);
-  console.log("Ubicación izquierda (offsetLeft):", leftOffset);
- */
+  }
 
 
-</script>
 
-<script>
-  
+
+
+
+  function stopUpdateMousePos() {
+    document.removeEventListener("mousemove", updateMousePos);
+  }
+
+
+
+
+
   var tl
-  function enableTimeline() {
-    var tl = gsap.timeline({
-      scrollTrigger: {
-        
-        markers: true,
-        trigger: ".wrapper",
-        scrub: 3,
-        start: "top top+=200px",
-        end: "+=100",
-   
 
+  function enableTimeline() {
+    tl = gsap.timeline({
+      scrollTrigger: {
+        markers: false,
+        scrub: false,
+        once: true,
+        trigger: ".section1",
+        start: "top top",
+        end: "+=100",
+
+        
       },
     })
+
     tl.to(".section2", {
       display: "block",
+      duration: 0.005,
     });
+
+
+
+
+
+    tl.add(getSection2pos,);
+
+
+
+    function getSection2pos() {
+      var section2 = document.querySelector(".section2");
+      var section2Rect = section2.getBoundingClientRect();
+      var section2Top = section2Rect.top + window.scrollY;
+
+      var bolaElement = document.querySelector(".bola");
+      var bolaElementRect = bolaElement.getBoundingClientRect();
+      var bolaElementBottom = bolaElementRect.bottom + window.scrollY;
+
+      var deltaY = section2Top - bolaElementBottom;
+
+
+      tl.to(".bola", {
+        y: deltaY,
+        ease: "bounce.out",
+      });
+
+      tl.to(".section2", {
+        backgroundColor: "black",
+        duration: .005,
+        ease: "none",
+       
+      }, "-=.3");
+
+      
+    tl.to(".section3", {
+        ease: "none",
+        height: "100svh",
+  
+      },);
+
+
+
+    }
+
     tl.to(".int", {
-      opacity: 0,
+      display: "none",
+      duration: 0.005,
     });
-    
-    tl.to(".bola", {
-      y: 200,
-      scrub: true,
-   
-       ease: "bounce.out",
-   
-    });
+
     tl.to(".bola", {
       opacity: 1,
-  
-    }, "-=1");
+      duration: 0.005,
 
-
-  
-    tl.to(".section1", {
-      opacity: 0,
-  
     });
 
+    tl.add(stopUpdateMousePos);
 
   }
 
+
+
+
+
+  /* */
+
+
+
+
+
   var button = document.getElementById("buttonstart");
   button.addEventListener("click", enableTimeline);
+
+
+  const blobWrapper = document.querySelector('.blob-wrapper')
+        const numDivs = 15;
+        let numDivsPerSecond = 1000;
+        gsap.registerPlugin(ScrollTrigger);
+
+ 
+ 
+        var tl2 = gsap.timeline();
+ /* 
+gsap.to(".section2", {
+  yPercent: 50,
+    scrollTrigger: {
+    markers: { startColor: "red", endColor: "red", fontSize: "18px", fontWeight: "bold", indent: 20 }, 
+    trigger: ".section1",
+     start: "center center", // the default values
+     end: "bottom top",
+    scrub: true,
+  }, 
+});  */
+
+
+tl2.to(".wrapwrapper", {
+  scrollTrigger: {
+     // markers: { startColor: "violet", endColor: "violet", fontSize: "18px", fontWeight: "bold", indent: 20 },  
+    trigger: ".wrapwrapper",
+    start: "-=150top bottom",
+    end: "center center",
+    scrub: true,
+    onUpdate: createDivs,
+    duration: 1,
+  
+  }
+});
+
+
+
+
+function createDivs(self) {
+  let scrollProgress = self.progress;
+  let numDivsPerSecond = Math.floor(scrollProgress * 100) + 1;
+  console.log(scrollProgress);
+  console.log(numDivsPerSecond);
+  for (let i = 0; i < numDivsPerSecond; i++) {
+    const blob = document.createElement("div");
+    blob.classList.add("blob");
+    blob.style.left = `${Math.random() * 101}%`;
+    blob.style.width = `${scrollProgress * 5}%`;
+    blob.style.setProperty('--blob-top', `${Math.random() * 100}%`);
+    blob.style.setProperty('--blob-size', `${Math.random() * 8}%`);
+    blobWrapper.appendChild(blob);
+   
+  }
+
+
+  setTimeout(() => {
+    blob.remove()
+  }, 1500)
+
+
+if (scrollProgress === 1) {
+
+  
+  gsap.to(".bola", {
+       backgroundColor: "red",
+       y: -20,  
+    });
+
+    tl2.to(".blob-wrapper", {
+      scrub: 5 ,
+       backgroundColor: "black",
+      delay: 5,
+    
+    });
+     
+    tl2.to(".title", {
+      scrub: 5 ,
+       color: "black",
+             ease:"bounce.out",
+    });
+/*     tl2.to(".luz", {
+      scrub: 5 ,
+      opacity: 1,
+             ease:"bounce.out",
+    }); */
+
+    tl2.add(updatePseudoElement)
+
+    function updatePseudoElement() {
+    var luzElement = document.querySelector(".title");
+
+    // Modificar la propiedad opacity del pseudo-elemento ::after
+    gsap.set(luzElement, { "--after-opacity": 1});
+  }
+
+    tl2.to(".title", {
+      scrub: 5 ,
+       color: "#A5B381",
+       duration: 20,
+       ease:"bounce.out", 
+    });
+  }
+}
+
+
+
+
+
 
 </script>
 </body>
