@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@800;900&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+.space{
+    height: 150vh;
+    width: 100vw;
+    
+  background-color: #F5B7B1;
+}
+.menu{
+  position: relative;
+  width: 0vw;
+  height: 100vh;
+  background-color: black;
+  }
+  .lista-menu  {
+    display: flex;
+    position: fixed;
+    list-style-type: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.986);
+    height: 100vh;
+    width: 0vw;
+   
+    z-index: 509;
+  
+
+  
+  }
+
+  .lista-menu li  {
+  opacity: 0;}
+  
+  .item-menu {
+    display: flex;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.201);
+    border: solid 1px black;
+    width:80%;  
+   font-size: 3rem;
+   justify-content: center
+  }
+  .item-menu a{
+    display: block;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.201);
+    border: solid 1px black;
+     
+      width:100%;  
+    
+   font-size: 3rem
+  }
+  
+
+  
+  .item-menu  a:hover:not(.active) {
+    background-color: #78c7c7;
+  
+  }
+
+  .hamburguer{
+height: 20px;
+background-color: aqua;
+aspect-ratio: 1;
+z-index: 999;
+  }
+  
+
+  .closeIcon {
+    display: none;
+  }
+
+  .showMenu {
+    transform: translateY(0);
+  }
+
+
+
+  /*--*/
+.nav-container{
+  position: relative;
+}
+ .hamb{
+  right: 5%;
+  top: 5%;
+  position: fixed;
+  display: flex;
+  border-radius: 100%;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+  z-index: 999;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid black;
+ }
+
+ .bar1, .bar2, .bar3{
+  position: absolute;
+  left: 50%;
+  display:inline-block;
+  width: 37px;
+  height: 4px;
+  background-color: rgb(31, 30, 30);
+  border-radius: 10px;
+  transition: .3s ease-in-out;  
+  transform: translateX(-50%) translateY(-50%) rotate(0);
+ }
+
+ .bar1{
+  top: 30%;
+ }
+ .bar2{
+  top: 50%;
+ }
+ .bar3{
+  top: 70%;
+ }
