@@ -15,47 +15,57 @@
   <div class="hamb">
     <span class="bar1"></span><span class="bar2"></span><span class="bar3"></span>
   </div>
-</div>
-<div class="menu">
-  <ul class="lista-menu">
-    <li class="item-menu" ><a  href="#home">Home</a></li>
-    <li class="item-menu"><a  href="#news">News</a></li>
-    <li class="item-menu"><a  href="#contact">Contact</a></li>
-    <li class="item-menu"><a  href="#about">About</a></li>
-  </ul>
-</div>
+  <div class="menu">
+    <ul class="lista-menu">
+      <li class="item-menu"><a href="#home">Home</a></li>
+      <li class="item-menu"><a href="#news">News</a></li>
+      <li class="item-menu"><a href="#contact">Contact</a></li>
+      <li class="item-menu"><a href="#about">About</a></li>
+    </ul>
+  </div>
 
   <div class="avisoScroll">
     <h3>Scroll down!</h3>
   </div>
   <section class="section1">
+    <div class="scrollUpInicio"></div>
+    <div class="cuadrado">
+      <div class="textInicioContainer">
+        <h1 class="textInicio">Bienvenido a una historia miedo</h1>
+      </div>
+      <div class="wrapper1">
+        <div class="cortinaIzq"></div>
+        <div class="cortinaDer"></div>
+        <button class="boton" id="buttonstart">
 
-    <div class="wrapper1">
-
-      <button class="boton" id="buttonstart"></button>
-      <div class="ojo">
-        <div class="forma">
-          <div class="cont">
-          </div>
-          <div class="ball">
-            <div class="iris">
-              <div class="int"></div>
+        </button>
+        <div class="ojo">
+          <div class="forma">
+            <div class="cont">
+            </div>
+            <div class="ball">
+              <div class="iris">
+                <div class="int"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+ 
     </div>
 
-
-
-
+    <div class="bola"></div>
+    <section class="section2">
+    </section>
   </section>
-  <div class="bola"></div>
+ 
 
-  <section class="section2"> </section>
+
   <section class="section3 wrapwrapper ">
+
     <div class="divAncho">
       <div class="amarillo"></div>
+      <div class="prueba" id="prueba"></div>
       <div class="bordeNegro"></div>
       <div class="content__text">
         <div class="blob-wrapper">
@@ -64,12 +74,13 @@
           <div class="wrapperText1"></div>
           <div class="wrapperText2"></div>
           <div class="wrapperText3"></div>
-
-          <div class="luz"></div>
+     
+          <div class="luz" id="luz"></div>
         </div>
       </div>
 
       <div class="cosa section3b">
+        <div class="foco"></div>
         <div class="cosita"></div>
         <div class="cosita1">
           <h1>hola</h1>
@@ -78,6 +89,7 @@
 
       </div>
       <div class="cosa2">
+
         <div class="cosita"></div>
         <div class="cosita2">
           <h1>chau</h1>
@@ -87,7 +99,6 @@
       </div>
 
     </div>
-    <!--       <div><h1 class="title"> <div class="luz"></div> animación, blob, <br> lava</h1></div>  -->
 
   </section>
   <section class="section4">
@@ -102,26 +113,86 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
 <script>
 
-  //MENU
-  var button = document.getElementById("buttonstart");
+
+
+luz.addEventListener("click", fosforo)
+let boolfosforo = false
+    
+  function fosforo() {
+
+    
+    if (boolfosforo === false) {
+   
+      gsap.to(".luz", {
+        filter: "invert(100%)",
+        duration: 0,
+      }, )
+
+      gsap.to(".text--oscuridad", {
+        filter: "invert(100%)",
+        duration: 0,
+      })
+
+     gsap .to(".amarillo", {
+        backdropFilter: "sepia(100%)",
+        duration: 10,
+      })
+
+      gsap.to(".luz", {
+        backgroundColor: " #f9f9f9",
+        boxShadow: "0 0 40px 20px #fff, 0 0 100px 50px #ff0",
+      })
+      gsap.to(".wrapperText1", {
+        opacity: 1,
+        duration: 20,
+      },)
+       gsap.to(".wrapperText2", {
+        opacity: 1,
+        duration: 20,
+      }, "<")
+      gsap .to(".wrapperText3", {
+        opacity: 1,
+        duration: 20,
+      }, "<")
+
+
+      gsap.to(".luz", {
+        opacity: 1,
+        ease: "bounce.out",
+        duration: 10,
+      })
+
+
+
+       gsap.to(".luz", {
+        duration: 10,
+      },)
+      boolfosforo === true
+    }}
+  
+
+    //MENU
+  let button = document.getElementById("buttonstart");
+  button.addEventListener("click", mouseojo);
+  button.addEventListener("click", startAnimation);
   button.addEventListener("click", enableTimeline);
 
-
-
+  
   let toggle = document.querySelector(".hamb");
   let boolmenu = false;
   let tlmenu = gsap.timeline()
 
 
-  toggle.addEventListener("click", function () {
+  toggle.addEventListener("click", hamburguer)
+  function hamburguer() {
     if (boolmenu === false) {
-      gsap.to(".bar1", { duration: .2, width: "45px", height: "4px", top: "48%", left: "45%", rotate: "45deg" })
+      gsap.to(".bar1", { duration: .2, width: "45px", height: "4px", top: "50%", left: "45%", rotate: "45deg" })
       gsap.to(".bar2", { duration: .2, width: "2px", })
-      gsap.to(".bar3", { duration: .2, width: "45px", height: "4px", top: "48%", left: "45%", rotate: "-45deg" })
-
+      gsap.to(".bar3", { duration: .2, width: "45px", height: "4px", top: "50%", left: "45%", rotate: "-45deg" })
       tlmenu.to(".lista-menu", {
         duration: .4,
-        width: "100%",
+        opacity: .8,
+        width: "100vw",
         ease: "power2.in",
       });
       tlmenu.to(".lista-menu li", {
@@ -146,16 +217,14 @@
         width: 0,
         ease: "power2.out",
       });
-   
       boolmenu = false
     }
-  })
+  }
 
   const showAnimli = gsap.from('.hamb', {
     yPercent: -180,
     stagger: 0.1,
     duration: 0.2,
-
   }).progress(1);
 
   ScrollTrigger.create({
@@ -163,81 +232,116 @@
     end: 99999,
     onUpdate: (self) => {
       if (self.direction === -1) {
-
         showAnimli.play();
       } else {
-
         showAnimli.reverse();
       }
     }
   });
 
 
-
   //
+
+  let boolfoco = false;
+  let cosita1 = document.querySelector(".cosita");
+
+  cosita1.addEventListener("click", foco)
+
+  function foco() {
+    if (boolfoco === false) {
+      gsap.to(".foco", { duration: 2, "--circle": "100vmax" })
+      tlmenu.to(".foco", {
+        duration: .4,
+        opacity: 0,
+        ease: "power2.in",
+      });
+      tlmenu.to(".cosita", {
+        duration: .7,
+        opacity: 1,
+        ease: "power3.in",
+      })
+      boolfoco = true
+    } else {
+      gsap.to(".foco", { duration: 2, "--circle": "10vmax" })
+      tlmenu.to(".foco", {
+        duration: .4,
+        opacity: 1,
+
+        ease: "power2.in",
+      });
+      tlmenu.to(".cosita", {
+        duration: .5,
+        scale: 1.5,
+        ease: "power2.out",
+      });
+      boolfoco = false
+    }
+  }
+
+
+
 
   gsap.registerPlugin(ScrollTrigger);
 
 
-  var button = document.getElementById("buttonstart");
-
-  var contanimacion = document.querySelector(".cont");
-  var irisanimacion = document.querySelector(".iris");
-
-  var irisElement = document.querySelector(".iris");
-  var bolaElement = document.querySelector(".bola");
-
-  var avisoScroll = document.querySelector(".avisoScroll");
 
 
+  let contanimacion = document.querySelector(".cont");
+  let irisanimacion = document.querySelector(".iris");
 
-  button.addEventListener("click",startAnimation);
+  let irisElement = document.querySelector(".iris");
+  let bolaElement = document.querySelector(".bola");
+
+  let avisoScroll = document.querySelector(".avisoScroll");
+
+
 
   function startAnimation() {
- 
+
     let delayedCall;
-  ScrollTrigger.create({
-    start: "top top",
-    end: 99999,
+    ScrollTrigger.create({
+      start: "top top",
+      end: 99999,
 
-    onUpdate: self => {
-      const velocity = self.getVelocity();
-      console.log("es" + velocity) ;
-      if (velocity > 1) {
-        gsap.to('.avisoScroll', { opacity: 0 })
-      } else if (velocity < -1) {
-        gsap.to('.avisoScroll', { opacity: 0 })
+      onUpdate: self => {
+        const velocity = self.getVelocity();
+        // console.log("es" + velocity);
+        if (velocity > 1) {
+          gsap.to('.avisoScroll', { opacity: 0 })
+        } else if (velocity < -1) {
+          gsap.to('.avisoScroll', { opacity: 0 })
+        }
+        if (delayedCall)
+          delayedCall.kill();
+        delayedCall = gsap.delayedCall(1, () => gsap.to('.avisoScroll', { opacity: 1 }));
       }
-      if (delayedCall)
-        delayedCall.kill();
-      delayedCall = gsap.delayedCall(1, () => gsap.to('.avisoScroll', { opacity: 1 }));
-    }
-  });
+    });
 
-  
+
     contanimacion.classList.add("animatecont");
     irisanimacion.classList.add("animateiris");
   }
 
 
 
-  var section1 = document.querySelector(".section1");
-  var midWidth = Math.floor(section1.offsetWidth / 2);
-  var midHeight = Math.floor(section1.offsetHeight / 2);
-  var mousePos = {
+  let section1 = document.querySelector(".section1");
+  let midWidth = Math.floor(section1.offsetWidth / 2);
+  let midHeight = Math.floor(section1.offsetHeight / 2);
+  let mousePos = {
     x: midWidth,
     y: midHeight
   };
 
-  document.addEventListener("mousemove", updateMousePos);
+  function mouseojo(){
+  document.addEventListener("mousemove", updateMousePos);}
 
   function updateMousePos(event) {
     if (section1.contains(event.target)) {
-      mousePos.x = event.pageX - section1.offsetLeft;
-      mousePos.y = event.pageY - section1.offsetTop;
-      var transX = mousePos.x - midWidth;
-      var transY = mousePos.y - midHeight;
-      var skewX = 0;
+      mousePos.x = event.clientX - section1.offsetLeft;
+      mousePos.y = event.clientY - section1.offsetTop;
+       transX = mousePos.x - midWidth;
+       transY = mousePos.y - midHeight;
+       skewX = 0;
       if (transX > -30 && transX < 30 && transY < 0) {
         skewX = transX / 2;
       } else if (transX > -30 && transX < 30 && transY >= 0) {
@@ -263,19 +367,17 @@
       } else if (skewX <= -15) {
         skewX = -15;
       }
-
-      var iris = document.querySelector(".iris");
+    
+      let iris = document.querySelector(".iris");
       iris.style.transform = "translateX(" + transX + "px) translateY(" + transY + "px) skewX(" + skewX + "deg) skewY(2deg)";
-
-      var irisRect = irisElement.getBoundingClientRect();
-      var irisTop = irisRect.top + window.scrollY;
-      var irisLeft = irisRect.left + window.scrollX;
-
+ 
+      let irisRect = irisElement.getBoundingClientRect();
+      let irisLeft = irisRect.left + window.scrollX;
+      let irisTop = irisRect.top + window.scrollY;
+      bolaElement.style.left = irisLeft + 36 + "px";
       bolaElement.style.top = irisTop + 30 + "px";
-      bolaElement.style.left = irisLeft + 35 + "px";
-
-
-
+      bolaElement.style.transform = " skewX(" + skewX + "deg) skewY(2deg)";
+ 
     }
   }
 
@@ -287,60 +389,177 @@
 
   var tl
 
-
-
   function enableTimeline() {
 
-    tl = gsap.timeline({
+   function bolaubicacion(){
+    let iris = document.querySelector(".iris"); 
+      let irisRect = irisElement.getBoundingClientRect();
+      let irisLeft = irisRect.left + window.scrollX;
+      let irisTop = irisRect.top + window.scrollY;
+      bolaElement.style.left = irisLeft + 36 + "px";
+      bolaElement.style.top = irisTop + 30 + "px";
+      bolaElement.style.transform = " skewX(" + skewX + "deg) skewY(2deg)";
+   }
+
+    tlscrollUpInicio = gsap.timeline({
+      
       scrollTrigger: {
-        markers: true,
-        scrub: 1,
+        markers: { startColor: "green", endColor: "green", fontSize: "18px", fontWeight: "bold", indent: 20 },
+        scrub: 2,
         trigger: ".section1",
         start: "top top",
-        end: "40% top",
+        end: "+=800",
         invalidateOnRefresh: true,
+        pin: true,
 
       }
     })
 
+   
+   
+    .to(".cortinaDer", {
+    x: 350,
+    rotate: -10,
+    height: "120vh",
+   ease: Power1.easeIn,
+   duration: 10
+ 
+    },"<") 
 
+    .to(".cortinaIzq", {
+    x: -350,
+    rotate: 10,
+    height: "120vh",
+    duration: 10,
+   ease: Power1.easeIn,
+ 
+    },"<") 
 
+    
+      
+   .to(".scrollUpInicio", {
+    y: 10,
+    height: "200vh",
+   ease: Power1.easeIn,
+ 
+    },"<") 
+
+         
+ 
+
+   .to(".textInicio", {
+    y: 500,
+    color: "#229954",
+    opacity:.2,
+    scale: 2,
+    duration: 10,
+   ease: Power1.easeIn,
+ 
+    },"<") 
+
+   
+   .to(".ojo", {
+   
+    scale: 1.5,
+    duration: 10,
+   ease: Power1.easeIn,
+ 
+    },"<")  
+    .to(".bola", {
+   scale: 1.5,
+   duration: 10,
+  ease: Power1.easeIn,
+
+   },"<")  
+
+   tlscrollUpInicio.add(bolaubicacion, "<")
+    
+    .to(".textInicio", {
+    scale: 5
+    }) 
+  
+   
+
+   
+
+   
     /*---TL1---*/
-    tl.add(getSection2pos,);
+    tlscrollUpInicio.add(getSection2pos, )
+    .to(".textInicio", {
+    scale: 5
+    }) 
+  ScrollTrigger.refresh();
+
 
     function getSection2pos() {
-      var section2 = document.querySelector(".section2");
-      var section2Rect = section2.getBoundingClientRect();
-      var section2Top = section2Rect.top + window.scrollY;
-      var bolaElement = document.querySelector(".bola");
-      var bolaElementRect = bolaElement.getBoundingClientRect();
-      var bolaElementBottom = bolaElementRect.bottom + window.scrollY;
-      var deltaY = section2Top - bolaElementBottom;
-      tl.to(".bola", {
+
+
+      let section2 = document.querySelector(".section2");
+      let section2Rect = section2.getBoundingClientRect();
+      let section2Top = section2Rect.top + window.scrollY;
+      let bolaElement = document.querySelector(".bola");
+      let bolaElementRect = bolaElement.getBoundingClientRect();
+      let bolaElementBottom = bolaElementRect.bottom + window.scrollY;
+      let deltaY = section2Top - bolaElementBottom
+     
+      tlscrollUpInicio.to(".bola", {
         y: deltaY,
+     
         duration: 20,
         ease: "bounce.out",
-
+        zIndex:999,
+        skewX: "0deg",
+        skewY: "0deg",
+        
       })
+      
 
-
-        .to(".section2", {
-          backgroundColor: "black",
-          duration: .005,
-          ease: "none",
-        }, "<+=7.3");
-    }
-
-    tl.to(".int", {
-      display: "none",
-      duration: 0.005,
-    })
       .to(".bola", {
         opacity: 1,
         duration: 0.005,
+      },"<")
+   
 
-      })
+      tlscrollUpInicio.to(".section2", {
+          backgroundColor: "black",
+          duration: .005,
+          ease: "none",
+        }, "<+=7.3")
+        .to(".textInicio", {
+          opacity:1,
+    color: "black",
+    },"<") 
 
+        .to(".scrollUpInicio", {
+          backgroundColor: "black",
+          duration: .005,
+          ease: "none",
+    },"<")
+   .to(".int", {
+      display: "none",
+      duration: 0.005,
+    },"<")
+      
+    }
+ 
+    tlscrollUpInicio.to(".bola", {
+  
+      },"+=10")
+      tl = gsap.timeline({
+      scrollTrigger: {
+        markers: { startColor: "violet", endColor: "violet", fontSize: "18px", fontWeight: "bold", indent: 20 },
+        scrub: 1,
+        trigger: ".ojo",
+        start: "-50% top",
+        end: "50% top",
+        invalidateOnRefresh: true,
+       // once: true,
+       force3D: true,
+       once: true,
+        toggleActions: "play none none none", 
+       
+      }
+    })
 
 
     tl.to(".section3", {
@@ -350,6 +569,7 @@
 
 
     ScrollTrigger.refresh();
+    
 
     tl.add(tl2)
     tl.add(stopUpdateMousePos);
@@ -366,9 +586,12 @@
     return -(divAnchoWidth - window.innerWidth);
 
   }
+
+  
   /*---TL2---*/
   function tl2() {
-
+  
+    
     const blobWrapper = document.querySelector('.blob-wrapper')
     const numDivs = 15;
     let numDivsPerSecond = 1000;
@@ -376,17 +599,16 @@
     let tl2 = gsap.timeline({
       onStart: createDivs,
       scrollTrigger: {
-        //    markers: { startColor: "violet", endColor: "violet", fontSize: "18px", fontWeight: "bold", indent: 20 },
+   markers: { startColor: "red", endColor: "red", fontSize: "18px", fontWeight: "bold", indent: 20 },
         trigger: ".wrapwrapper",
         start: "top top",
         end: () => `+=${getScrollAmount() * -8}`,
         pin: true,
         pinSpacing: true,
         scrub: .1,
-
+        force3D: true
       }
     })
-
 
 
     /* 
@@ -434,6 +656,17 @@
 
     }
 
+    function update(e) {
+      var x = e.clientX || e.touches[0].clientX
+      var y = e.clientY || e.touches[0].clientY
+      document.documentElement.style.setProperty('--cursorX', x + 'px')
+      document.documentElement.style.setProperty('--cursorY', y + 'px')
+    }
+
+    function luz() {
+      document.addEventListener('mousemove', update)
+      document.addEventListener('touchmove', update)
+    }
 
 
     let sec = `${getScrollAmount() / 1}`;
@@ -447,12 +680,15 @@
       duration: 20,
 
     })
-    tl2.to(".blob-wrapper", {
+ tl2.to(".blob-wrapper", {
       backgroundColor: "rgb(0, 0, 0)",
-      duration: 40,
-    },)
+      duration: 20,
+    },) 
 
-      .to(".text--oscuridad", {
+    
+   
+
+     tl2 .to(".text--oscuridad", {
         opacity: 0,
         ease: "bounce.out",
         duration: 5,
@@ -471,15 +707,16 @@
         filter: "invert(0%)",
         opacity: 1,
         duration: 1,
-
       }, "<")
+
       .to(".text--oscuridad", {
         opacity: 1,
         duration: 8,
       })
 
+    tl2.add(luz)
 
-      .to(".text--oscuridad", {
+    /*  .to(".text--oscuridad", {
         filter: "invert(100%)",
         duration: 0,
       })
@@ -498,8 +735,8 @@
       .to(".luz", {
         backgroundColor: " #f9f9f9",
         boxShadow: "0 0 40px 20px #fff, 0 0 100px 50px #ff0",
-      })
-
+      }) 
+ 
       .to(".wrapperText1", {
         opacity: 1,
         duration: 20,
@@ -520,37 +757,31 @@
         duration: 10,
       })
 
-      .to(".text--oscuridad", {
-        y: 700,
-        ease: Elastic.easeOut,
-        duration: 10,
-      })
-      .to(".luz", {
-        y: -300,
-        duration: 8,
-      }, "<")
-
-
 
 
       .to(".luz", {
         duration: 10,
-      },)
+      },)*/
 
       .to(".divAncho", {
         x: -sec,
         duration: 3,
         ease: "none",
       })
-      /* .add(function () { console.log('x: ' + sec) }) */
-      /* .to(".cosita", {
-      rotate: 360*2,
-      duration: 3,
-      ease: "none",
-      }) */
 
 
-      /* tl2.add(tl3) */
+      .to(".divAncho", {
+        x: "-100vw",
+        duration: 10,
+        ease: "none",
+      })
+
+      .to(".text--oscuridad", {
+        opacity: 0,
+        ease: "bounce.out",
+        duration: 5,
+      })
+  
       .to(".cosita1", {
         rotate: 360 * 2,
         duration: 3,
@@ -558,17 +789,19 @@
 
       })
 
-      .to(".divAncho", {
-        x: "-100vw",
-        duration: 10,
-        ease: "none",
-      })
+
+
+
       .add(function gsamo() {
         let divAnchoWidth = divAncho.scrollWidth;
         let gsamo = divAnchoWidth - window.innerWidth;
-        /*   console.log(gsamo) */
+    
       })
-
+      .to(".foco", {
+        "--circle": "10vmax",
+        duration: 3,
+        ease: "none",
+      })
       .to(".cosita1", {
         rotate: 360 * 2,
         y: 300,
@@ -578,22 +811,21 @@
       })
       .to(".divAncho", {
         x: "-200vw",
-
         duration: 10,
         ease: "none",
         delay: 20
       })
+      .to(".foco", {
+        x: "100vw",
+        duration: 10,
+        ease: "none",
+      }, "<")
       .to(".cosita2", {
         y: 150,
         duration: 10,
         ease: "none",
       })
-      .to(".divAncho", {
-        x: "-200vw",
-        duration: 10,
-        ease: "none",
-        delay: 20
-      })
+
       .to(".section4", {
         height: "100vh",
       },)

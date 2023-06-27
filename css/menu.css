@@ -5,7 +5,122 @@
   margin: 0;
   padding: 0;
 }
+/*monstruo*/
+wrapper {
+  width: 800px;
+  height: 800px;
+}
 
+.monster {
+  height: 300px;
+  width: 300px;
+  background: cornflowerblue;
+  border-radius: 50%;
+  margin: 150px auto;
+  box-shadow: inset -30px -30px                     rgba(0,0,0,.06);
+  .eyebrow1 {
+    width: 70px;
+    height: 10px;
+    background-color: black;
+    margin-left: 60px;
+    float: left;
+    position: relative;
+    top: 50px;
+    transform: rotate(25deg);
+    animation: eyebrows 1s infinite alternate;
+  }
+    .eyebrow2 {
+    width: 70px;
+    height: 10px;
+    background-color: black;
+    margin-left: 35px;
+    float: left;
+    position: relative;
+    top: 50px;
+    transform: rotate(-25deg);
+    animation: eyebrows 1s infinite alternate;
+  }
+  .eye {
+    float: left;
+    height: 40px;
+    width: 20px;
+    background: black;
+    border-radius: 50%;
+    margin-top: 70px;
+    margin-left: 84px;
+    animation: blink 1s cubic-bezier(1,.01,1,-0.08) alternate infinite both;
+  }
+  .mouth {
+    height: 100px;
+    width: 180px;
+    background: black;
+    position: relative;
+    top: 150px;
+    left: 60px;
+    border-radius: 20px 20px 50% 50%;
+      .tooth1 {
+        position: absolute;
+        left: 15px;
+        width: 0;
+        height: 0;
+        border-left: 20px solid   transparent;
+        border-right: 20px solid transparent;
+        border-top: 40px solid white;
+        float: left;
+        margin-left: 20px;
+      }
+      .tooth2 {
+        position: absolute;
+        left: 80px;
+        width: 0;
+        height: 0;
+        border-left: 20px solid   transparent;
+        border-right: 20px solid transparent;
+        border-top: 40px solid white;
+        float: left;
+        margin-left: 20px;
+      }
+    }
+  }
+  .drop {
+    position: relative;
+    top: 80px;
+    left: 165px;
+  width: 30px;
+  height: 30px;
+
+  border: 0 solid rgba(0,0,0,1);
+border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+  transform: rotate(-45deg);
+  background: crimson;
+    animation: blooddrop 2s infinite;
+  }
+
+.shadow {
+  width: 250px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, .4);
+  border-radius: 50%;
+  position: relative;
+  bottom: 180px;
+  left: 560px;
+  z-index: -1;
+}
+
+@keyframes blink {
+  100% {transform: rotateX(180deg);}
+}
+
+@keyframes blooddrop {
+  0% { opacity: 0; }
+  100% { transform: translateY(50px) rotate(-45deg); opacity: 1;}
+}
+
+@keyframes eyebrows {
+  100% {top: 30px;}
+}
+
+/*----*/
 
 .space{
     height: 150vh;
@@ -13,93 +128,76 @@
     
   background-color: #F5B7B1;
 }
-.menu{
-  position: relative;
-  width: 0vw;
+/*MENU*/
+.lista-menu {
+  display: flex;
+  position: fixed;
+  list-style-type: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.986);
   height: 100vh;
-  background-color: black;
-  }
-  .lista-menu  {
-    display: flex;
-    position: fixed;
-    list-style-type: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.986);
-    height: 100vh;
-    width: 0vw;
-   
-    z-index: 509;
-  
+  width: 0vw;
+  opacity: 0;
 
-  
-  }
-
-  .lista-menu li  {
-  opacity: 0;}
-  
-  .item-menu {
-    display: flex;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.201);
-    border: solid 1px black;
-    width:80%;  
-   font-size: 3rem;
-   justify-content: center
-  }
-  .item-menu a{
-    display: block;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.201);
-    border: solid 1px black;
-     
-      width:100%;  
-    
-   font-size: 3rem
-  }
-  
-
-  
-  .item-menu  a:hover:not(.active) {
-    background-color: #78c7c7;
-  
-  }
-
-  .hamburguer{
-height: 20px;
-background-color: aqua;
-aspect-ratio: 1;
-z-index: 999;
-  }
-  
-
-  .closeIcon {
-    display: none;
-  }
-
-  .showMenu {
-    transform: translateY(0);
-  }
+  z-index: 991;
 
 
 
-  /*--*/
-.nav-container{
-  position: relative;
 }
- .hamb{
+
+.lista-menu li {
+  width: 100%;
+  opacity: 1;
+}
+
+.item-menu {
+  display: flex;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.201);
+  border: solid 1px black;
+  width: 100%;
+  font-size: 3rem;
+
+
+  
+}
+
+.item-menu a {
+  display: block;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  text-decoration: none;
+  background-color: #F5B7B1;
+  border: solid 1px black;
+  width: 100%;
+  font-size: 3rem;
+
+}
+
+
+
+.item-menu a:hover:not(.active) {
+  background-color: #78c7c7;
+
+}
+
+.nav-container {
+  position: relative;
+
+}
+
+.hamb {
   right: 5%;
   top: 5%;
   position: fixed;
-  display: flex;
+/*   display: flex; */
   border-radius: 100%;
   width: 80px;
   height: 80px;
@@ -108,26 +206,74 @@ z-index: 999;
   z-index: 999;
   background-color: rgb(255, 255, 255);
   border: 2px solid black;
- }
+  justify-content: center;
+  align-items: center;
+  /*   animation: circular 15s linear infinite; */
+  box-shadow: 10px 13px 68px -4px rgba(0, 0, 0, 0.73);
+  -webkit-box-shadow: 10px 13px 68px -4px rgba(0, 0, 0, 0.73);
+  -moz-box-shadow: 10px 13px 68px -4px rgba(0, 0, 0, 0.73);
+}
 
- .bar1, .bar2, .bar3{
+/* @keyframes circular {
+  from {
+    transform: rotate(0deg) translateX(10px) rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg) translateX(10px) rotate(-360deg);
+  }
+}
+ */
+.bar1,
+.bar2,
+.bar3 {
   position: absolute;
   left: 50%;
-  display:inline-block;
+  display: inline-block;
   width: 37px;
   height: 4px;
   background-color: rgb(31, 30, 30);
   border-radius: 10px;
-  transition: .3s ease-in-out;  
+  transition: .3s ease-in-out;
   transform: translateX(-50%) translateY(-50%) rotate(0);
- }
+}
 
- .bar1{
+.bar1 {
   top: 30%;
- }
- .bar2{
+}
+
+.bar2 {
   top: 50%;
- }
- .bar3{
+}
+
+.bar3 {
   top: 70%;
- }
+}
+
+:root {
+
+  --cursorX: 50vw;
+  --cursorY: 50vh;
+  --circle: 10vmax;
+}
+.foco {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  color: rgb(255, 255, 0) ;
+  pointer-events: none;
+  background: radial-gradient(
+    circle var(--circle)  at var(--cursorX) var(--cursorY),
+    rgba(255, 255, 255, .2) 60%,
+    rgba(255,255,0,.5) 80%,
+    rgba(0,0,0,.99) 100%
+  )
+}
+
+.space1{
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(13, 0, 255);
+}
