@@ -29,9 +29,10 @@
 
 .textInicioContainer{
   position: absolute;
-  width: 50%;
+  width: 100vw;
   top: 5%;
   text-align: center;
+  overflow: hidden;
 }
 
 
@@ -63,12 +64,13 @@
 
 .section2 {
 
- height: 320px;
+ height: 100px;
   width: 100%;
   background-color: #229954;
   z-index: 500;
   position: absolute;
-  bottom: -300px;
+  bottom: -0 ;
+ 
 }
 
 
@@ -81,7 +83,7 @@
 .cosa {
   display: flex;
   height: 100vh;
-  width: 0vw;
+  width: 200vw;
   background-color: rgb(255, 255, 255);
   left: 100vw;
   position: absolute;
@@ -305,12 +307,12 @@
   width: 100%;
   overflow: hidden;
   background-color: transparent;
-    height: 100vh; 
+  /*   height: 100vh; */
 
 }
 
 .section3 {
-  height: 100vh;
+  height: 10vh;
 
 }
 
@@ -326,6 +328,7 @@
   width: fit-content;
   display: flex;
   flex-wrap: nowrap;
+  width: 100vw;
 }
 
 
@@ -339,7 +342,8 @@
   left: -20px;
   background: rgb(255, 255, 255);
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
-  height: 1500px;
+  /* height: 1500px; */
+  height: 0px;
   width: 110%;
   filter: blur(10px) contrast(100);
   z-index: -1;
@@ -392,7 +396,7 @@
 .text--oscuridad {
 
   position: relative;
-  height: auto;
+  height: 0;
   width: 84%;
   aspect-ratio: 1 / 1;
   background-size: contain;
@@ -652,7 +656,6 @@ flex-basis: auto;
   top: 70%;
 }
 
- 
 
 .cuadrado{
  
@@ -677,7 +680,7 @@ border-left: 2px solid #161414;
   height:10vh;
   width: 99vw;
   background-color: #229954;
-  z-index: 1;
+  z-index: 20;
   transform: translateY(100%);
 }
 
@@ -711,7 +714,7 @@ border-left: 2px solid #161414;
   position: absolute;
   width: 100%;
   height: 100%;
-  transform: translateX(-50px);
+/*   transform: translateX(-50px); */
 }
 
 .cortinaDer{
@@ -721,16 +724,7 @@ border-left: 2px solid #161414;
   position: absolute;
   width: 100%;
   height: 100%;
-  transform: translateX(50px);
-
-
-}
-.prueba{
-  width: 50px;
-  height: 50px;
-  background-color: red;
-  position: absolute;
-  z-index: 999;
+/*   transform: translateX(50px); */
 
 
 }
