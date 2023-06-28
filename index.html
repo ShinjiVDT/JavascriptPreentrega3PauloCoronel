@@ -51,14 +51,14 @@
           </div>
         </div>
       </div>
- 
+
     </div>
 
     <div class="bola"></div>
     <section class="section2">
     </section>
   </section>
- 
+
 
 
   <section class="section3 wrapwrapper ">
@@ -74,7 +74,7 @@
           <div class="wrapperText1"></div>
           <div class="wrapperText2"></div>
           <div class="wrapperText3"></div>
-     
+
           <div class="luz" id="luz"></div>
         </div>
       </div>
@@ -113,27 +113,35 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
 <script>
 
+/* 
 
+  luz.addEventListener("click", fosforo)
+  let boolfosforo = false
 
-luz.addEventListener("click", fosforo)
-let boolfosforo = false
-    
   function fosforo() {
 
-    
+
     if (boolfosforo === false) {
-   
+      let sec = `${getScrollAmount() / 1}`;
+
+
+      gsap.to(".cosa", {
+        width: "200vw",
+        duration: 0,
+      },)
+
+
       gsap.to(".luz", {
         filter: "invert(100%)",
         duration: 0,
-      }, )
+      },)
 
       gsap.to(".text--oscuridad", {
         filter: "invert(100%)",
         duration: 0,
       })
 
-     gsap .to(".amarillo", {
+      gsap.to(".amarillo", {
         backdropFilter: "sepia(100%)",
         duration: 10,
       })
@@ -146,11 +154,11 @@ let boolfosforo = false
         opacity: 1,
         duration: 20,
       },)
-       gsap.to(".wrapperText2", {
+      gsap.to(".wrapperText2", {
         opacity: 1,
         duration: 20,
       }, "<")
-      gsap .to(".wrapperText3", {
+      gsap.to(".wrapperText3", {
         opacity: 1,
         duration: 20,
       }, "<")
@@ -164,20 +172,25 @@ let boolfosforo = false
 
 
 
-       gsap.to(".luz", {
+      gsap.to(".luz", {
         duration: 10,
       },)
       boolfosforo === true
-    }}
-  
 
-    //MENU
+
+
+
+    }
+  } */
+
+
+  //MENU
   let button = document.getElementById("buttonstart");
   button.addEventListener("click", mouseojo);
   button.addEventListener("click", startAnimation);
   button.addEventListener("click", enableTimeline);
 
-  
+
   let toggle = document.querySelector(".hamb");
   let boolmenu = false;
   let tlmenu = gsap.timeline()
@@ -332,16 +345,17 @@ let boolfosforo = false
     y: midHeight
   };
 
-  function mouseojo(){
-  document.addEventListener("mousemove", updateMousePos);}
+  function mouseojo() {
+    document.addEventListener("mousemove", updateMousePos);
+  }
 
   function updateMousePos(event) {
     if (section1.contains(event.target)) {
       mousePos.x = event.clientX - section1.offsetLeft;
       mousePos.y = event.clientY - section1.offsetTop;
-       transX = mousePos.x - midWidth;
-       transY = mousePos.y - midHeight;
-       skewX = 0;
+      transX = mousePos.x - midWidth;
+      transY = mousePos.y - midHeight;
+      let skewX = 0;
       if (transX > -30 && transX < 30 && transY < 0) {
         skewX = transX / 2;
       } else if (transX > -30 && transX < 30 && transY >= 0) {
@@ -367,17 +381,18 @@ let boolfosforo = false
       } else if (skewX <= -15) {
         skewX = -15;
       }
-    
+
       let iris = document.querySelector(".iris");
       iris.style.transform = "translateX(" + transX + "px) translateY(" + transY + "px) skewX(" + skewX + "deg) skewY(2deg)";
- 
+
       let irisRect = irisElement.getBoundingClientRect();
       let irisLeft = irisRect.left + window.scrollX;
       let irisTop = irisRect.top + window.scrollY;
       bolaElement.style.left = irisLeft + 36 + "px";
       bolaElement.style.top = irisTop + 30 + "px";
-      bolaElement.style.transform = " skewX(" + skewX + "deg) skewY(2deg)";
- 
+      bolaElement.style.transform = "skew(" + skewX + "deg)"
+      //skewY("+skewY+"deg)";
+
     }
   }
 
@@ -385,24 +400,25 @@ let boolfosforo = false
     document.removeEventListener("mousemove", updateMousePos);
   }
 
-
+  let deltaY
 
   var tl
 
   function enableTimeline() {
 
-   function bolaubicacion(){
-    let iris = document.querySelector(".iris"); 
-      let irisRect = irisElement.getBoundingClientRect();
-      let irisLeft = irisRect.left + window.scrollX;
-      let irisTop = irisRect.top + window.scrollY;
-      bolaElement.style.left = irisLeft + 36 + "px";
-      bolaElement.style.top = irisTop + 30 + "px";
-      bolaElement.style.transform = " skewX(" + skewX + "deg) skewY(2deg)";
-   }
+    /*  function bolaubicacion(){
+      let iris = document.querySelector(".iris"); 
+        let irisRect = irisElement.getBoundingClientRect();
+        let irisLeft = irisRect.left + window.scrollX;
+        let irisTop = irisRect.top + window.scrollY;
+        bolaElement.style.left = irisLeft + 36 + "px";
+        bolaElement.style.top = irisTop + 30 + "px";
+        bolaElement.style.transform="skew("+ skewX+"deg)"
+    
+     } */
 
     tlscrollUpInicio = gsap.timeline({
-      
+
       scrollTrigger: {
         markers: { startColor: "green", endColor: "green", fontSize: "18px", fontWeight: "bold", indent: 20 },
         scrub: 2,
@@ -415,149 +431,155 @@ let boolfosforo = false
       }
     })
 
-   
-   
-    .to(".cortinaDer", {
-    x: 350,
-    rotate: -10,
-    height: "120vh",
-   ease: Power1.easeIn,
-   duration: 10
+
+
+      .to(".cortinaDer", {
+        x: 350,
+        rotate: -10,
+        height: "120vh",
+        ease: Power1.easeIn,
+        duration: 10
+
+      }, "<")
+
+      .to(".cortinaIzq", {
+        x: -350,
+        rotate: 10,
+        height: "120vh",
+        duration: 10,
+        ease: Power1.easeIn,
+
+      }, "<")
+
+
+
+      .to(".scrollUpInicio", {
+        y: 10,
+        height: "200vh",
+        ease: Power1.easeIn,
+
+      }, "<")
+
+
+
+
+      .to(".textInicio", {
+        y: 500,
+        color: "#229954",
+        scale: 2,
+        duration: 10,
+        opacity: .5,
+        ease: Power1.easeIn,
+      }, "<")
  
-    },"<") 
 
-    .to(".cortinaIzq", {
-    x: -350,
-    rotate: 10,
-    height: "120vh",
-    duration: 10,
-   ease: Power1.easeIn,
- 
-    },"<") 
+      .to(".ojo", {
+        y: -250,
+        duration: 10,
+        ease: Power1.easeIn,
+      }, "<")
 
-    
-      
-   .to(".scrollUpInicio", {
-    y: 10,
-    height: "200vh",
-   ease: Power1.easeIn,
- 
-    },"<") 
-
-         
- 
-
-   .to(".textInicio", {
-    y: 500,
-    color: "#229954",
-    opacity:.2,
-    scale: 2,
-    duration: 10,
-   ease: Power1.easeIn,
- 
-    },"<") 
-
-   
-   .to(".ojo", {
-   
-    scale: 1.5,
-    duration: 10,
-   ease: Power1.easeIn,
- 
-    },"<")  
-    .to(".bola", {
-   scale: 1.5,
-   duration: 10,
-  ease: Power1.easeIn,
-
-   },"<")  
-
-   tlscrollUpInicio.add(bolaubicacion, "<")
-    
-    .to(".textInicio", {
-    scale: 5
-    }) 
-  
-   
-
-   
-
-   
-    /*---TL1---*/
-    tlscrollUpInicio.add(getSection2pos, )
-    .to(".textInicio", {
-    scale: 5
-    }) 
-  ScrollTrigger.refresh();
+      .to(".bola", {
+        y: -250,
+        duration: 10,
+        ease: Power1.easeIn,
+      }, "<")
 
 
-    function getSection2pos() {
-
-
-      let section2 = document.querySelector(".section2");
-      let section2Rect = section2.getBoundingClientRect();
-      let section2Top = section2Rect.top + window.scrollY;
-      let bolaElement = document.querySelector(".bola");
-      let bolaElementRect = bolaElement.getBoundingClientRect();
-      let bolaElementBottom = bolaElementRect.bottom + window.scrollY;
-      let deltaY = section2Top - bolaElementBottom
-     
-      tlscrollUpInicio.to(".bola", {
-        y: deltaY,
-     
-        duration: 20,
-        ease: "bounce.out",
-        zIndex:999,
-        skewX: "0deg",
-        skewY: "0deg",
-        
+      .to(".textInicio", {
+        scale: 10,
+        opacity: 0,
+        duration: 10,
       })
-      
+
+
+
+
+
+
+      /*---TL1---*/
+      /*     tlscrollUpInicio.add(getSection2pos, ) */
+    
+    // ScrollTrigger.refresh();
+
+    /* FUNCION INSERTADA DIRECTAMENTE EN LA VARIABLE DE GSAP
+        function getSection2pos() {
+    
+    
+          let section2 = document.querySelector(".section2");
+          let section2Rect = section2.getBoundingClientRect();
+          let section2Top = section2Rect.top + window.scrollY;
+          let bolaElement = document.querySelector(".bola");
+          let bolaElementRect = bolaElement.getBoundingClientRect();
+          let bolaElementBottom = bolaElementRect.bottom + window.scrollY;
+           deltaY = section2Top - bolaElementBottom
+          console.log("bbb" + deltaY)
+         return deltaY} */
+    console.log("aaa" + deltaY)
+    tlscrollUpInicio.to(".bola", {
+      y: () => {
+        let section2 = document.querySelector(".section2");
+        let section2Rect = section2.getBoundingClientRect();
+        let section2Top = section2Rect.top + window.scrollY;
+        let bolaElement = document.querySelector(".bola");
+        let bolaElementRect = bolaElement.getBoundingClientRect();
+        let bolaElementBottom = bolaElementRect.bottom + window.scrollY;
+        deltaY = section2Top - bolaElementBottom
+        console.log("bbb" + deltaY)
+        return deltaY - 250
+      },
+
+      duration: 20,
+      ease: "bounce.out",
+      zIndex: 999,
+
+
+    },"<")
+
 
       .to(".bola", {
         opacity: 1,
         duration: 0.005,
-      },"<")
+      }, "<")
+
+
+    tlscrollUpInicio.to(".section2", {
+      backgroundColor: "black",
+      duration: .005,
+      ease: "none",
+    }, "<+=7.3")
+      .to(".textInicio", {
+        color: "black",
+      }, "<")
    
+      .to(".scrollUpInicio", {
+        backgroundColor: "black",
+        duration: .005,
+        ease: "none",
+      }, "<")
+      .to(".int", {
+        display: "none",
+        duration: 0.005,
+      }, "<")
 
-      tlscrollUpInicio.to(".section2", {
-          backgroundColor: "black",
-          duration: .005,
-          ease: "none",
-        }, "<+=7.3")
-        .to(".textInicio", {
-          opacity:1,
-    color: "black",
-    },"<") 
 
-        .to(".scrollUpInicio", {
-          backgroundColor: "black",
-          duration: .005,
-          ease: "none",
-    },"<")
-   .to(".int", {
-      display: "none",
-      duration: 0.005,
-    },"<")
-      
-    }
- 
+     
     tlscrollUpInicio.to(".bola", {
-  
-      },"+=10")
-      tl = gsap.timeline({
+
+    }, "+=10")
+    tl = gsap.timeline({
       scrollTrigger: {
-        markers: { startColor: "violet", endColor: "violet", fontSize: "18px", fontWeight: "bold", indent: 20 },
+       markers: { startColor: "violet", endColor: "violet", fontSize: "18px", fontWeight: "bold", indent: 20 },
         scrub: 1,
         trigger: ".ojo",
         start: "-50% top",
         end: "50% top",
-        invalidateOnRefresh: true,
-       // once: true,
-       force3D: true,
-       once: true,
-        toggleActions: "play none none none", 
-       
+       invalidateOnRefresh: true,
+        // once: true,
+        force3D: true,
+        once: true,
+        toggleActions: "play none none none",
+
       }
     })
 
@@ -569,11 +591,11 @@ let boolfosforo = false
 
 
     ScrollTrigger.refresh();
-    
+
 
     tl.add(tl2)
-    tl.add(stopUpdateMousePos);
 
+      .add(stopUpdateMousePos)
   }
 
 
@@ -587,11 +609,11 @@ let boolfosforo = false
 
   }
 
-  
+
   /*---TL2---*/
   function tl2() {
-  
-    
+
+
     const blobWrapper = document.querySelector('.blob-wrapper')
     const numDivs = 15;
     let numDivsPerSecond = 1000;
@@ -599,7 +621,7 @@ let boolfosforo = false
     let tl2 = gsap.timeline({
       onStart: createDivs,
       scrollTrigger: {
-   markers: { startColor: "red", endColor: "red", fontSize: "18px", fontWeight: "bold", indent: 20 },
+        markers: { startColor: "red", endColor: "red", fontSize: "18px", fontWeight: "bold", indent: 20 },
         trigger: ".wrapwrapper",
         start: "top top",
         end: () => `+=${getScrollAmount() * -8}`,
@@ -609,20 +631,21 @@ let boolfosforo = false
         force3D: true
       }
     })
+    /* let tl2 = gsap.timeline({
+      onStart: createDivs,
+      scrollTrigger: {
+   markers: { startColor: "red", endColor: "red", fontSize: "18px", fontWeight: "bold", indent: 20 },
+        trigger: ".wrapwrapper",
+        start: "top top",
+        end: "+=1000",
+        pin: true,
+        pinSpacing: true,
+        scrub: .1,
+        force3D: true
+      }
+    }) */
 
 
-    /* 
-      tl2.to(".wrapwrapper", {
-        scrollTrigger: {
-          markers: { startColor: "violet", endColor: "violet", fontSize: "18px", fontWeight: "bold", indent: 20 },
-          trigger: ".wrapwrapper",
-          start: "top bottom",
-          end: " center center",
-          once: true,
-          onUpdate: createDivs,
-    
-        }
-      }); */
     let i = 0;
     let a = 0;
     let e = 0;
@@ -669,7 +692,7 @@ let boolfosforo = false
     }
 
 
-    let sec = `${getScrollAmount() / 1}`;
+
     /*   console.log("scroll " + getScrollAmount());
     console.log("scroll /3 " + sec)
     */
@@ -680,19 +703,19 @@ let boolfosforo = false
       duration: 20,
 
     })
- tl2.to(".blob-wrapper", {
+    tl2.to(".blob-wrapper", {
       backgroundColor: "rgb(0, 0, 0)",
       duration: 20,
-    },) 
+    },)
 
-    
-   
 
-     tl2 .to(".text--oscuridad", {
-        opacity: 0,
-        ease: "bounce.out",
-        duration: 5,
-      })
+
+
+    tl2.to(".text--oscuridad", {
+      opacity: 0,
+      ease: "bounce.out",
+      duration: 5,
+    })
 
       .to(".text--oscuridad", {
         filter: "invert(50%)",
@@ -716,58 +739,58 @@ let boolfosforo = false
 
     tl2.add(luz)
 
-    /*  .to(".text--oscuridad", {
-        filter: "invert(100%)",
-        duration: 0,
-      })
+     .to(".text--oscuridad", {
+       filter: "invert(100%)",
+       duration: 0,
+     })
 
-      .to(".amarillo", {
-        backdropFilter: "sepia(100%)",
-        duration: 10,
-      })
+     .to(".amarillo", {
+       backdropFilter: "sepia(100%)",
+       duration: 10,
+     })
 
 
 
-      .to(".luz", {
-        filter: "invert(100%)",
-        duration: 0,
-      }, "<")
-      .to(".luz", {
-        backgroundColor: " #f9f9f9",
-        boxShadow: "0 0 40px 20px #fff, 0 0 100px 50px #ff0",
-      }) 
+     .to(".luz", {
+       filter: "invert(100%)",
+       duration: 0,
+     }, "<") 
+     .to(".luz", {
+      backgroundColor: " #f9f9f9",
+      boxShadow: "0 0 40px 20px #fff, 0 0 100px 50px #ff0",
+    }) 
  
-      .to(".wrapperText1", {
-        opacity: 1,
-        duration: 20,
-      },)
-      .to(".wrapperText2", {
-        opacity: 1,
-        duration: 20,
-      }, "<")
-      .to(".wrapperText3", {
-        opacity: 1,
-        duration: 20,
-      }, "<")
+    .to(".wrapperText1", {
+      opacity: 1,
+      duration: 20,
+    },)
+    .to(".wrapperText2", {
+      opacity: 1,
+      duration: 20,
+    }, "<")
+    .to(".wrapperText3", {
+      opacity: 1,
+      duration: 20,
+    }, "<")
 
 
-      .to(".luz", {
-        opacity: 1,
-        ease: "bounce.out",
-        duration: 10,
-      })
+    .to(".luz", {
+      opacity: 1,
+      ease: "bounce.out",
+      duration: 10,
+    })
 
 
 
-      .to(".luz", {
-        duration: 10,
-      },)*/
-
-      .to(".divAncho", {
-        x: -sec,
-        duration: 3,
-        ease: "none",
-      })
+    .to(".luz", {
+      duration: 10,
+    },) 
+    let sec = `${getScrollAmount() / 1}`;
+    tl2.to(".divAncho", {
+      x: -sec,
+      duration: 3,
+      ease: "none",
+    })
 
 
       .to(".divAncho", {
@@ -781,7 +804,7 @@ let boolfosforo = false
         ease: "bounce.out",
         duration: 5,
       })
-  
+
       .to(".cosita1", {
         rotate: 360 * 2,
         duration: 3,
@@ -795,7 +818,7 @@ let boolfosforo = false
       .add(function gsamo() {
         let divAnchoWidth = divAncho.scrollWidth;
         let gsamo = divAnchoWidth - window.innerWidth;
-    
+
       })
       .to(".foco", {
         "--circle": "10vmax",

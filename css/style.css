@@ -81,7 +81,7 @@
 .cosa {
   display: flex;
   height: 100vh;
-  width: 200vw;
+  width: 0vw;
   background-color: rgb(255, 255, 255);
   left: 100vw;
   position: absolute;
@@ -189,7 +189,7 @@
   } */
 
 .int {
-  content: "";
+  opacity: .2;
   position: absolute;
   width: 30px;
   height: 30px;
@@ -274,7 +274,7 @@
 
 
 .bola {
-  opacity: 0;
+  opacity: 1;
   position: absolute;
   height: 28px;
   width: 28px;
@@ -305,12 +305,12 @@
   width: 100%;
   overflow: hidden;
   background-color: transparent;
-  /*   height: 100vh; */
+    height: 100vh; 
 
 }
 
 .section3 {
-  height: 0vh;
+  height: 100vh;
 
 }
 
@@ -655,6 +655,7 @@ flex-basis: auto;
  
 
 .cuadrado{
+ 
   position: absolute;
   display: flex;
   justify-content: space-evenly;
@@ -670,10 +671,11 @@ border-left: 2px solid #161414;
 }
 
 .scrollUpInicio{
+  overflow-x: hidden;
   bottom: 0;
   position: absolute;
   height:10vh;
-  width: 99svw;
+  width: 99vw;
   background-color: #229954;
   z-index: 1;
   transform: translateY(100%);
