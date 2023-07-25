@@ -544,13 +544,19 @@ function tlSection3() {
     opacity: 0,
     duration: 0,
   },)
+  tlSection3.to(".divAncho", {
+    x: "-10vw",
+    duration: 20,
+    ease: "none",
+  }, "<")
     .to(".click", {
+      delay:20,
       opacity: 1,
-    },)
+    },"<")
     .to(".click", {
       duration: 20,
       rotate: 360,
-    },)
+    },"<")
     .to(".bola2", {
       pointerEvents: "auto",
       keyframes: {
@@ -562,11 +568,7 @@ function tlSection3() {
       duration: 20,
     }, "<")
  
-  tlSection3.to(".divAncho", {
-    x: "-10vw",
-    duration: 20,
-    ease: "none",
-  }, "<")
+
   tlSection3.to(".divAncho", {
     x: "-90vw",
     duration: 20,
