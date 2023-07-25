@@ -93,7 +93,7 @@
 }
 
 .cortinaIzq {
-  background-image: url(../cortina1.png);
+  background-image: url(../recursos/cortina1.png);
   background-size: 100% 100%;
   z-index: 50;
   position: absolute;
@@ -104,7 +104,7 @@
 }
 
 .cortinaDer {
-  background-image: url(../cortinaDerecha.png);
+  background-image: url(../recursos/cortinaDerecha.png);
   background-size: 100% 100%;
   z-index: 50;
   position: absolute;
@@ -487,7 +487,7 @@
   aspect-ratio: 1 / 1;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url("../miedooscuridad.png");
+  background-image: url("../recursos/miedooscuridad.png");
   z-index: 5;
   filter: invert(100%);
   opacity: 1;
@@ -519,7 +519,7 @@
   aspect-ratio: 1 / 1;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url("../tienen.png");
+  background-image: url("../recursos/tienen.png");
   opacity: 0;
 }
 
@@ -532,7 +532,7 @@
   aspect-ratio: 1 / 1;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url("../ala.png");
+  background-image: url("../recursos/ala.png");
   opacity: 0;
 }
 
@@ -545,7 +545,7 @@
   aspect-ratio: 1 / 1;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url("../pregunta.png");
+  background-image: url("../recursos/pregunta.png");
   opacity: 0;
 }
 
