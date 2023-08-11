@@ -35,5 +35,5 @@ function pasarAscreen3() {
   presentacionBtl.to(".presentacion__indexB", { delay: 2, opacity: 0, duration: 5, ease: "power.out" })
     .add(() => { presentacionB.style.zIndex = 0; })
     .fromTo("#buttonstart", { opacity: 0 }, { opacity: 1, duration: .5, ease: "power.out" },)
-    .fromTo(".click-inicio", { x: -800, opacity: 0 }, { x: 0, opacity: 1, duration: .5, ease: "bounce.out" })
+    .fromTo(".seccion1__click-inicio", { x: -800, opacity: 0 }, { x: 0, opacity: 1, duration: .5, ease: "bounce.out" })
 }
